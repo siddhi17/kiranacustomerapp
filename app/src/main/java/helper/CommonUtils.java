@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.EditText;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
  * Created by Owner on 08-11-2016.
  */
 public class CommonUtils {
-
+    private static final String REQUIRED_MSG = "";
     public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9+._%-+]{1,256}" +
                     "@" +
@@ -48,6 +49,38 @@ public class CommonUtils {
         }
 
         return false;
+    }
+    public static boolean isValid(EditText editText, String regex, String errMsg, boolean required)
+    {
+
+        String text = editText.getText().toString().trim();
+        // clearing the error, if it was previously set by some other values
+        editText.setError(null);
+
+        // text required and editText is blank, so return false
+        if ( required && !hasText(editText) ) return false;
+
+        // pattern doesn't match so returning false
+        if (required && !Pattern.matches(regex, text))
+        {
+            editText.setError(errMsg);
+            return false;
+        };
+
+        return true;
+    }
+    public static boolean hasText(EditText editText)
+    {
+
+        String text = editText.getText().toString().trim();
+
+        // length 0 means there is no text
+        if (text.length() == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate){
