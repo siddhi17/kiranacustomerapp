@@ -1,0 +1,44 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_menu_settings"
+            android:checked="true"
+            android:icon="@drawable/ic_setting2"
+            android:title="Settings"
+            android:textColor="#FFFFFF" />
+
+        <item
+            android:id="@+id/nav_menu_share"
+            android:icon="@drawable/ic_share"
+            android:title="Share"
+            android:textColor="#FFFFFF" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:title="About"
+            android:icon="@drawable/ic_about"
+            android:textColor="#FFFFFF" />
+
+        <item
+            android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout"
+            android:textColor="#FFFFFF" />
+
+        <item
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_support"
+            android:title="Support"
+            android:textColor="#FFFFFF" />
+        <item
+            android:id="@+id/nav_bills"
+            android:title="Bills"
+            android:icon="@drawable/ic_monthly_acc"
+            android:textColor="#FFFFFF" >
+        </item>
+
+    </group>
+
+</menu>

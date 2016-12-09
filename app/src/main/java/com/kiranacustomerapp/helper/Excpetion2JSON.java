@@ -1,4 +1,4 @@
-package helper;
+package com.kiranacustomerapp.helper;
 
 import org.json.JSONException;
 import org.json.JSONObject;

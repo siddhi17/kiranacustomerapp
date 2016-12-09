@@ -1,4 +1,4 @@
-package helper;
+package com.kiranacustomerapp.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,6 @@ public class SessionData {
     public SessionData(Context context) {
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, Context.MODE_APPEND);
-
     }
 
     public boolean add(String name, String value) {
@@ -24,17 +23,14 @@ public class SessionData {
         return editor.commit();
     }
 
-
     public boolean add(String name, int value) {
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt(name, value);
-
         return editor.commit();
     }
     public boolean add(String name, long value) {
         SharedPreferences.Editor editor = pref.edit();
         editor.putLong(name, value);
-
         return editor.commit();
     }
 
@@ -42,7 +38,9 @@ public class SessionData {
         return pref.getString(name, defaultValue);
     }
 
-
+    public int getInt(String name, int defultValue) {
+        return pref.getInt(name,defultValue);
+    }
 
     public long getLong(String name, long defultValue) {
         return Long.parseLong(getString(name,""+defultValue));
@@ -53,7 +51,6 @@ public class SessionData {
     public boolean delete(String name) {
         SharedPreferences.Editor editor = pref.edit();
         editor.remove(name);
-
         return editor.commit();
     }
     public void clearSession() {
@@ -66,6 +63,5 @@ public class SessionData {
         SharedPreferences.Editor editor = pref.edit();
         editor.remove("name");
         editor.commit();
-
     }
 }

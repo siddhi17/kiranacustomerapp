@@ -1,4 +1,4 @@
-package helper;
+package com.kiranacustomerapp.helper;
 
 import android.Manifest;
 import android.app.Activity;
@@ -55,7 +55,7 @@ public class CommonUtils {
 
         String text = editText.getText().toString().trim();
         // clearing the error, if it was previously set by some other values
-        editText.setError(null);
+      //  editText.setError(null);
 
         // text required and editText is blank, so return false
         if ( required && !hasText(editText) ) return false;
@@ -63,7 +63,7 @@ public class CommonUtils {
         // pattern doesn't match so returning false
         if (required && !Pattern.matches(regex, text))
         {
-            editText.setError(errMsg);
+          //  editText.setError(errMsg);
             return false;
         };
 

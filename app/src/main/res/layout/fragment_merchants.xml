@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinatorLayout"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@color/activity_bg_color"
+        android:id="@+id/l2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginBottom="@dimen/small_vertical_margin"
+            android:background="@drawable/bg"
+            android:id="@+id/rv_fetch_merchants"
+            android:layout_below="@+id/tvLoadMore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

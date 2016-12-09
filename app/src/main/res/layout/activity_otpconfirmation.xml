@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    android:id="@+id/coordinatorLayout"
+    tools:context=".Activities.OtpConfirmation">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:titleTextColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+        </android.support.v7.widget.Toolbar>>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_marginLeft="@dimen/medium_vertical_margin"
+        android:layout_marginRight="@dimen/medium_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="Please enter OTP sent on your mobile number below."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_vertical_margin"
+            android:textSize="15dp" />
+        <EditText
+            android:id="@+id/edt_otp"
+            android:layout_marginTop="@dimen/medium_vertical_margin"
+            android:gravity="center"
+            android:hint="Enter OTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="true"
+            android:enabled="true"
+            android:inputType="number"
+            android:maxLength="6" />
+        <LinearLayout
+            android:layout_marginTop="@dimen/medium_vertical_margin"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_resend_otp"
+                android:textAllCaps="false"
+                android:text="Resend OTP"
+                android:background="@drawable/btn_hlf_blue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/exlarge_vertical_margin"
+                android:textColor="@color/btn_text"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_weight="1"
+                android:layout_marginRight="3dp" />
+            <Button
+                android:id="@+id/btn_submit_otp"
+                android:textAllCaps="false"
+                android:text="Submit OTP"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/btn_hlf_purple"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/exlarge_vertical_margin"
+                android:textColor="@color/btn_text"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

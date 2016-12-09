@@ -1,4 +1,4 @@
-package helper;
+package com.kiranacustomerapp.helper;
 
 /**
  * Created by Owner on 08-11-2016.
