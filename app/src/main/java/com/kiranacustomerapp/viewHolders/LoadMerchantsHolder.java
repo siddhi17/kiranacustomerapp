@@ -2,6 +2,7 @@ package com.kiranacustomerapp.viewHolders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -18,6 +19,7 @@ public class LoadMerchantsHolder  extends RecyclerView.ViewHolder{
     public TextView tv_kiarana_name,tv_address;
     public LinearLayout lay_row;
     public RelativeLayout layoutFav;
+    public Button btnPlaceOrder;
 
 
     public LoadMerchantsHolder(View v) {
@@ -28,6 +30,7 @@ public class LoadMerchantsHolder  extends RecyclerView.ViewHolder{
         layoutFav = (RelativeLayout) v.findViewById(R.id.layoutFav);
         imgFavEmpty = (ImageView) v.findViewById(R.id.imageViewEmpty);
         imgFavFill = (ImageView) v.findViewById(R.id.imageViewFill);
+        btnPlaceOrder = (Button) v.findViewById(R.id.btnPlacePrder);
         //img_cust_avatar = (ImageView) v.findViewById(R.id.img_cust_avatar);
 
 

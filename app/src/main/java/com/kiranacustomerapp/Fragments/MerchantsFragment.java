@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -56,6 +58,7 @@ public class MerchantsFragment extends Fragment {
 
         Toolbar toolbar = (Toolbar) ((HomeActivity) getActivity()).findViewById(R.id.toolbar);
         toolbar.setTitle("MERCHANTS");
+        toolbar.setNavigationIcon(R.drawable.ic_menu);
         ((HomeActivity) getActivity()).setSupportActionBar(toolbar);
         final DrawerLayout drawer = (DrawerLayout)((HomeActivity) getActivity()). findViewById(R.id.drawer_layout1);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

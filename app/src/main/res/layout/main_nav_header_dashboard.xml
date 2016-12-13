@@ -53,7 +53,7 @@
         android:id="@+id/imageView3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
-        android:background="@drawable/btn_purple" />
+        android:background="@drawable/title_line" />
 
     <TextView
         android:layout_width="220dp"

@@ -3,7 +3,6 @@ package com.kiranacustomerapp.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,16 +11,14 @@ import android.view.ViewGroup;
 
 import com.kiranacustomerapp.Activities.HomeActivity;
 import com.kiranacustomerapp.Activities.MerchantProfileActivity;
-import com.kiranacustomerapp.AddFavMerchantAsyncTask;
+import com.kiranacustomerapp.AsyncTasks.AddFavMerchantAsyncTask;
+import com.kiranacustomerapp.Fragments.AddOrderFragment;
 import com.kiranacustomerapp.Fragments.MerchantsFragment;
-import com.kiranacustomerapp.Fragments.OrdersFragment;
 import com.kiranacustomerapp.Models.Merchants;
-import com.kiranacustomerapp.Models.Orders;
 import com.kiranacustomerapp.R;
 import com.kiranacustomerapp.helper.CommonUtils;
 import com.kiranacustomerapp.helper.SessionData;
 import com.kiranacustomerapp.viewHolders.LoadMerchantsHolder;
-import com.kiranacustomerapp.viewHolders.LoadOrdersHolder;
 
 import java.util.List;
 
@@ -152,6 +149,19 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         });
 
 
+        holder.btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fragmentManager = ((HomeActivity)context).getSupportFragmentManager();
+                AddOrderFragment fragment1 = new AddOrderFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("kiranaName",data.getKirana_name());
+                bundle.putString("merchant_id",String.valueOf(data.getMerchant_id()));
+                fragment1.setArguments(bundle);
+                fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment1,"RETRIEVE_ADDORDER_FRAGMENT").commit();
+            }
+        });
 
     }
 }
