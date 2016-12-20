@@ -16,11 +16,13 @@ import com.kiranacustomerapp.R;
 public class LoadOrderItemsHolder extends   RecyclerView.ViewHolder{
 
     public TextView txtItemName,txtItemQty;
+    public RelativeLayout relativeRow;
 
     public LoadOrderItemsHolder(View v) {
         super(v);
         txtItemName = (TextView) v.findViewById(R.id.textViewItemName);
         txtItemQty = (TextView) v.findViewById(R.id.textViewItemQty);
+        relativeRow = (RelativeLayout) v.findViewById(R.id.relativeParent);
 
     }
 }

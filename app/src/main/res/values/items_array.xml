@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="items_array">
+        <item>Potatoes 1kg</item>
+        <item>Rice 2kg</item>
+        <item>Eggs 12pieces</item>
+    </string-array>
+</resources>

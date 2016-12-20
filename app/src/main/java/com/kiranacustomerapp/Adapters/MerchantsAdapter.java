@@ -133,7 +133,6 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             @Override
             public void onClick(View view) {
 
-
                 Intent i = new Intent(context, MerchantProfileActivity.class);
 
                 i.putExtra("cont_name",data.getMerchant_name());
@@ -144,10 +143,8 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
                 context.startActivity(i);
 
-
             }
         });
-
 
         holder.btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override

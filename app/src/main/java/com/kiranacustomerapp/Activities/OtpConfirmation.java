@@ -47,7 +47,7 @@ public class OtpConfirmation extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               finish();
+               startActivity(new Intent(OtpConfirmation.this,MainActivity.class));
             }
         });
 

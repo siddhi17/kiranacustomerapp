@@ -4,6 +4,8 @@ package com.kiranacustomerapp.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.kiranacustomerapp.Database.DatabaseHelper;
 import com.kiranacustomerapp.helper.SessionData;
 
 
@@ -19,6 +21,9 @@ public class StartupActivity extends AppCompatActivity {
 
         sessionData = new SessionData(StartupActivity.this);
         sessionUserId = sessionData.getString("user_id","-1");
+
+        DatabaseHelper db = new DatabaseHelper(StartupActivity.this);
+        db.createDatabase();
 
         //if user logs in first time
 

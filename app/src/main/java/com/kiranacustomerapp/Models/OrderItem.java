@@ -6,12 +6,23 @@ package com.kiranacustomerapp.Models;
 public class OrderItem {
 
     String item_name,item_quantity,item_unit;
+    int item_id;
+
+    public OrderItem(){}
 
     public OrderItem(String itemName,String quantity,String unit)
     {
         this.item_name = itemName;
         this.item_quantity = quantity;
         this.item_unit = unit;
+    }
+
+    public int getItem_id() {
+        return item_id;
+    }
+
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
 
     public String getItemName() {
