@@ -5,30 +5,22 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.kiranacustomerapp.Database.ItemsTableHelper;
-import com.kiranacustomerapp.Models.OrderItem;
 import com.kiranacustomerapp.Models.QueryOrderItem;
 
-import java.util.ArrayList;
-
 /**
- * Created by Siddhi on 12/20/2016.
+ * Created by Siddhi on 12/23/2016.
  */
-public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>> {
-
+public class AddQueryItemAsyncTask extends AsyncTask<String,String,QueryOrderItem> {
     private Context mContext;
     private ItemsTableHelper dbConnector;
-    private GetItemsFromDbCallback getItemsFromDbCallback;
     private ProgressDialog progressDialog;
 
-    public GetAllItemsAsyncTask(Context context,GetItemsFromDbCallback getItemsFromDbCallback)
+    public AddQueryItemAsyncTask(Context context)
     {
-
         this.mContext = context;
-        this.getItemsFromDbCallback = getItemsFromDbCallback;
         dbConnector = new ItemsTableHelper(context);
 
     }
-
     @Override
     protected void onPreExecute() {
 
@@ -38,33 +30,27 @@ public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>
         progressDialog.setMessage("Please wait...");
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
-    //    progressDialog.show();
+        //   progressDialog.show();
 
-    }
-
-    public interface GetItemsFromDbCallback{
-        void doPostExecute(ArrayList<String> contacts);
     }
 
     @Override
-    public ArrayList<String> doInBackground(Void... params) {
+    public QueryOrderItem doInBackground(String... params) {
 
-        ArrayList<String> items = new ArrayList<>();
+        QueryOrderItem item = new QueryOrderItem(params[0]);
 
-        items = dbConnector.getAllItemNames();
+        dbConnector.addQueryItem(item);
 
-        return items;
+        return item;
     }
 
     @Override
-    public void onPostExecute(ArrayList<String> b) {
+    public void onPostExecute(QueryOrderItem b) {
         if (b != null) {
             // set the adapter's Cursor
 
-            getItemsFromDbCallback.doPostExecute(b);
-
             dbConnector.close();
-           // progressDialog.dismiss();
+            //   progressDialog.dismiss();
         }
     }
 }

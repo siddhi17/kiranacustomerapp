@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.kiranacustomerapp.Activities.HomeActivity;
 import com.kiranacustomerapp.Adapters.MerchantsAdapter;
@@ -68,14 +69,28 @@ public class MerchantsFragment extends Fragment {
             }
         });
 
+        ((HomeActivity)getActivity()).img_navigation_icon.setVisibility(View.VISIBLE);
+
         coordinatorLayout=(CoordinatorLayout)view.findViewById(R.id.coordinatorLayout);
         rv_fetch_merchants=(RecyclerView)view.findViewById(R.id.rv_fetch_merchants);
         merchantsList = new ArrayList<Object>();
-        merchantsAdapter = new MerchantsAdapter(this.getContext(),merchantsList,MerchantsFragment.this);
+        merchantsAdapter = new MerchantsAdapter(this.getContext(),merchantsList);
         rv_fetch_merchants.setLayoutManager(new LinearLayoutManager(context));
         rv_fetch_merchants.setAdapter(merchantsAdapter);
 
      //   loadData();
+
+        ((HomeActivity)getActivity()).img_navigation_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                SearchMerchantFragment fragment1 = new SearchMerchantFragment();
+                fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment1).commit();
+
+            }
+        });
 
         //access orders
         sessionData=new SessionData(getActivity());
@@ -152,7 +167,7 @@ public class MerchantsFragment extends Fragment {
                             String kiranaName,emailId,address,merchantName,phoneNo;
                             int fav;
 
-                            merchantId = jsonObject.getLong("mer_id");
+                            merchantId = jsonObject.getLong("merchant_id");
                             kiranaName = jsonObject.getString("kirana_name");
                             merchantName = jsonObject.getString("cont_name");
                             phoneNo = jsonObject.getString("phone_no");

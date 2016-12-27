@@ -10,12 +10,10 @@
         android:background="#ffffff"
         android:id="@+id/relativeParent">
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/linearLayout2"
-            android:layout_toStartOf="@+id/linearLayout2">
+            android:layout_alignParentStart="true">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,27 +21,10 @@
                 android:id="@+id/textViewItemName"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:textColor="@color/themetextcolor"
+                android:textColor="@color/lighttextcolor"
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/linearLayout2">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/textViewItemQty"
-                android:layout_gravity="left|center_vertical"
-                android:textColor="@color/abc_tint_default"
-                android:textSize="12sp"
-                android:layout_marginLeft="10dp" />
         </LinearLayout>
     </RelativeLayout>
 

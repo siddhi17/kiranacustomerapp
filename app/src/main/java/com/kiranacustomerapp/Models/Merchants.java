@@ -10,6 +10,9 @@ public class Merchants implements Serializable{
     private String merchant_name,kirana_name,merchant_address,mobile_no,phone,email_id;
     int fav;
     private Long merchant_id;
+    private double longitude,latitude;
+
+    public Merchants(){}
 
     public Merchants(Long merchant_id,String kirana_name,String merchant_address,int fav)
     {
@@ -30,6 +33,35 @@ public class Merchants implements Serializable{
         this.email_id = email_id;
         this.phone = phone;
 
+    }
+    public Merchants(Long merchant_id,String kirana_name,String merchant_name,String phone,String email_id,String merchant_address,double latitude,double longitude)
+    {
+        this.merchant_id = merchant_id;
+        this.kirana_name = kirana_name;
+        this.merchant_address = merchant_address;
+        this.fav = fav;
+        this.merchant_name = merchant_name;
+        this.email_id = email_id;
+        this.phone = phone;
+        this.longitude = longitude;
+        this.latitude = latitude;
+
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public String getEmail_id() {

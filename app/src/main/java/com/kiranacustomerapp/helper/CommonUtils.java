@@ -117,37 +117,45 @@ public class CommonUtils {
 
     public static boolean checkAndRequestPermissions(final Activity activity) {
 
-        int cameraPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
-        int calendarRdPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_CALENDAR);
-        int calendarWrPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_CALENDAR);
+      //  int cameraPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
+     //   int calendarRdPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_CALENDAR);
+     //   int calendarWrPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_CALENDAR);
         int storagePermissionWrtExt = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int storagePermissionReadExt = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
+    //    int storagePermissionReadExt = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
         int internetPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.INTERNET);
         int networkStatePermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_NETWORK_STATE);
+        int locationPermission = ContextCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_FINE_LOCATION);
+        int coarseLocation = ContextCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_COARSE_LOCATION);
 
         List<String> listPermissionsNeeded = new ArrayList<>();
 
-        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.CAMERA);
-        }
-        if (storagePermissionWrtExt != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
-        if (storagePermissionReadExt != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-        }
+    //    if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
+      //      listPermissionsNeeded.add(Manifest.permission.CAMERA);
+    //    }
+      //  if (storagePermissionWrtExt != PackageManager.PERMISSION_GRANTED) {
+       //     listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+       // }
+     //   if (storagePermissionReadExt != PackageManager.PERMISSION_GRANTED) {
+    //        listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+    //    }
         if (internetPermission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.INTERNET);
         }
         if (networkStatePermission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_NETWORK_STATE);
         }
-        if (calendarRdPermission != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.READ_CALENDAR);
+        if (locationPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
-        if (calendarWrPermission != PackageManager.PERMISSION_GRANTED) {
-            listPermissionsNeeded.add(Manifest.permission.WRITE_CALENDAR);
+        if (coarseLocation != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
+     //   if (calendarRdPermission != PackageManager.PERMISSION_GRANTED) {
+      //      listPermissionsNeeded.add(Manifest.permission.READ_CALENDAR);
+      //  }
+     //   if (calendarWrPermission != PackageManager.PERMISSION_GRANTED) {
+       //     listPermissionsNeeded.add(Manifest.permission.WRITE_CALENDAR);
+     //   }
 
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(activity, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);

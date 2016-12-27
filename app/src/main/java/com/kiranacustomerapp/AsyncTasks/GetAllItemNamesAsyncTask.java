@@ -4,28 +4,27 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.kiranacustomerapp.Database.ItemNamesTableHelper;
 import com.kiranacustomerapp.Database.ItemsTableHelper;
-import com.kiranacustomerapp.Models.OrderItem;
-import com.kiranacustomerapp.Models.QueryOrderItem;
 
 import java.util.ArrayList;
 
 /**
- * Created by Siddhi on 12/20/2016.
+ * Created by Siddhi on 12/22/2016.
  */
-public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>> {
+public class GetAllItemNamesAsyncTask extends AsyncTask<Void,Void,ArrayList<String>> {
 
     private Context mContext;
-    private ItemsTableHelper dbConnector;
-    private GetItemsFromDbCallback getItemsFromDbCallback;
+    private ItemNamesTableHelper dbConnector;
+    private GetItemNamesFromDbCallback getItemNamesFromDbCallback;
     private ProgressDialog progressDialog;
 
-    public GetAllItemsAsyncTask(Context context,GetItemsFromDbCallback getItemsFromDbCallback)
+    public GetAllItemNamesAsyncTask(Context context,GetItemNamesFromDbCallback getItemNamesFromDbCallback)
     {
 
         this.mContext = context;
-        this.getItemsFromDbCallback = getItemsFromDbCallback;
-        dbConnector = new ItemsTableHelper(context);
+        this.getItemNamesFromDbCallback = getItemNamesFromDbCallback;
+        dbConnector = new ItemNamesTableHelper(context);
 
     }
 
@@ -38,12 +37,12 @@ public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>
         progressDialog.setMessage("Please wait...");
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
-    //    progressDialog.show();
+        //    progressDialog.show();
 
     }
 
-    public interface GetItemsFromDbCallback{
-        void doPostExecute(ArrayList<String> contacts);
+    public interface GetItemNamesFromDbCallback{
+        void doPostExecute(ArrayList<String> itemNames,String s);
     }
 
     @Override
@@ -51,7 +50,7 @@ public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>
 
         ArrayList<String> items = new ArrayList<>();
 
-        items = dbConnector.getAllItemNames();
+        items = dbConnector.getAllItems();
 
         return items;
     }
@@ -61,10 +60,10 @@ public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>
         if (b != null) {
             // set the adapter's Cursor
 
-            getItemsFromDbCallback.doPostExecute(b);
+            getItemNamesFromDbCallback.doPostExecute(b,"");
 
             dbConnector.close();
-           // progressDialog.dismiss();
+            // progressDialog.dismiss();
         }
     }
 }

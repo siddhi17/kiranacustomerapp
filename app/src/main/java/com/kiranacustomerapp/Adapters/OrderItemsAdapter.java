@@ -2,6 +2,7 @@ package com.kiranacustomerapp.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,12 @@ import com.kiranacustomerapp.R;
 import com.kiranacustomerapp.viewHolders.LoadMerchantsHolder;
 import com.kiranacustomerapp.viewHolders.LoadOrderItemsHolder;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by Siddhi on 12/11/2016.
@@ -86,4 +92,6 @@ public class OrderItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
     }
+
+
 }

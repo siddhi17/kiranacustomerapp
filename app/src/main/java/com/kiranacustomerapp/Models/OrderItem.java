@@ -5,7 +5,7 @@ package com.kiranacustomerapp.Models;
  */
 public class OrderItem {
 
-    String item_name,item_quantity,item_unit;
+    String item_name,item_quantity,item_unit,item_order;
     int item_id;
 
     public OrderItem(){}

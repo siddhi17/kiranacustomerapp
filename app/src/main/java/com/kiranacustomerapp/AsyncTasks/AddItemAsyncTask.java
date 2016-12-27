@@ -4,22 +4,24 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.kiranacustomerapp.Database.ItemNamesTableHelper;
 import com.kiranacustomerapp.Database.ItemsTableHelper;
+import com.kiranacustomerapp.Models.Item;
 import com.kiranacustomerapp.Models.OrderItem;
 
 /**
  * Created by Siddhi on 12/20/2016.
  */
-public class AddItemAsyncTask extends AsyncTask<String,String,OrderItem> {
+public class AddItemAsyncTask extends AsyncTask<String,String,Item> {
 
         private Context mContext;
-        private ItemsTableHelper dbConnector;
+        private ItemNamesTableHelper dbConnector;
         private ProgressDialog progressDialog;
 
         public AddItemAsyncTask(Context context)
         {
             this.mContext = context;
-            dbConnector = new ItemsTableHelper(context);
+            dbConnector = new ItemNamesTableHelper(context);
 
         }
         @Override
@@ -36,21 +38,19 @@ public class AddItemAsyncTask extends AsyncTask<String,String,OrderItem> {
         }
 
         @Override
-        public OrderItem doInBackground(String... params) {
+        public Item doInBackground(String... params) {
 
-            OrderItem orderItem = new OrderItem();
+            Item item = new Item();
 
-            orderItem.setItemName(params[0]);
-            orderItem.setUnit(params[1]);
-            orderItem.setQuantity(params[2]);
+            item.setItemName(params[0]);
 
-            dbConnector.addItem(orderItem);
+            dbConnector.addItem(item);
 
-            return orderItem;
+            return item;
         }
 
         @Override
-        public void onPostExecute(OrderItem b) {
+        public void onPostExecute(Item b) {
             if (b != null) {
                 // set the adapter's Cursor
 
