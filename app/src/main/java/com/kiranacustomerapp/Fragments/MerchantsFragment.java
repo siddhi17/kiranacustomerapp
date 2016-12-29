@@ -58,7 +58,7 @@ public class MerchantsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_merchants, container, false);
 
         Toolbar toolbar = (Toolbar) ((HomeActivity) getActivity()).findViewById(R.id.toolbar);
-        toolbar.setTitle("MERCHANTS");
+        toolbar.setTitle(getString(R.string.merchantsTitle));
         toolbar.setNavigationIcon(R.drawable.ic_menu);
         ((HomeActivity) getActivity()).setSupportActionBar(toolbar);
         final DrawerLayout drawer = (DrawerLayout)((HomeActivity) getActivity()). findViewById(R.id.drawer_layout1);
@@ -131,7 +131,7 @@ public class MerchantsFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.setMessage("Please wait..");
+            progressDialog.setMessage(getString(R.string.wait));
             progressDialog.show();
         }
 

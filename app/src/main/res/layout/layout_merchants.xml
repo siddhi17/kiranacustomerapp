@@ -129,7 +129,7 @@
             <Button
                 android:id="@+id/btnPlacePrder"
                 android:textAllCaps="false"
-                android:text="Place Order"
+                android:text="@string/placeOrder"
                 style="?android:attr/borderlessButtonStyle"
                 android:background="@drawable/btn_hlf_blue"
                 android:layout_width="100dp"

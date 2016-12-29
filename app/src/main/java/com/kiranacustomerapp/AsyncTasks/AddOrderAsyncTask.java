@@ -14,6 +14,7 @@ import android.view.View;
 import com.kiranacustomerapp.Activities.HomeActivity;
 import com.kiranacustomerapp.Activities.OtpConfirmation;
 import com.kiranacustomerapp.Fragments.MerchantsFragment;
+import com.kiranacustomerapp.Fragments.OrdersFragment;
 import com.kiranacustomerapp.R;
 import com.kiranacustomerapp.helper.Excpetion2JSON;
 import com.kiranacustomerapp.helper.ServerRequest;
@@ -33,10 +34,12 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
     JSONObject jsonParams;
     private Context mContext;
     private ProgressDialog progressDialog;
+    private Boolean ordersFrag;
 
-    public AddOrderAsyncTask(Context context) {
+    public AddOrderAsyncTask(Context context,Boolean ordersFrag) {
 
         this.mContext = context;
+        this.ordersFrag = ordersFrag;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
         super.onPreExecute();
 
         progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait..");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.show();
 
     }
@@ -58,6 +61,7 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
             jsonParams.put("customer_id", params[2]);
             jsonParams.put("merchant_id", params[3]);
+            jsonParams.put("date_time",params[4]);
 
             ServerRequest request = new ServerRequest(api, jsonParams);
             return request.sendPostRequest(params[1]);
@@ -76,7 +80,12 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
             progressDialog.dismiss();
 
         try {
+
+            if(response != null)
+            {
+
             JSONArray jsonArray = response.getJSONArray("array");
+
             Log.d("ServerResponsejsonArray", ""+jsonArray);
             if(jsonArray.length() > 0) {
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -87,21 +96,13 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
                     } else {
                         //  Toast.makeText(mContext,"not updated",Toast.LENGTH_SHORT).show();
 
-                        FragmentManager fragmentManager = ((HomeActivity) mContext).getSupportFragmentManager();
-                        MerchantsFragment fragment1 = new MerchantsFragment();
-                        fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment1, "RETRIEVE_MERCHANTS_FRAGMENT").commit();
-
-                        ((HomeActivity) mContext).img_navigation_icon.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_search));
-                        ((HomeActivity) mContext).toolbar.setNavigationIcon(R.drawable.ic_menu);
-
-                        ((HomeActivity) mContext).img_merchant_white.setVisibility(View.VISIBLE);
-                        ((HomeActivity) mContext).img_orders.setVisibility(View.VISIBLE);
-                        ((HomeActivity) mContext).img_orders_white.setVisibility(View.GONE);
-                        ((HomeActivity) mContext).img_merchant.setVisibility(View.GONE);
-
-                        ((HomeActivity) mContext).showAlert("Order sent successfully.");
+                        ((HomeActivity) mContext).showAlert(mContext.getString(R.string.orderSent));
                     }
                 }
+            }
+            }
+            else {
+                ((HomeActivity) mContext).showAlert(mContext.getString(R.string.orderNotSent));
             }
 
         } catch(JSONException je) {

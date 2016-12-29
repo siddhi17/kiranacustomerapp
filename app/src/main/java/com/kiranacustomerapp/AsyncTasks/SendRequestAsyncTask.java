@@ -39,7 +39,7 @@ public class SendRequestAsyncTask extends AsyncTask<String, Void, JSONObject> {
         super.onPreExecute();
 
         progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait..");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.show();
 
     }
@@ -82,19 +82,7 @@ public class SendRequestAsyncTask extends AsyncTask<String, Void, JSONObject> {
                     } else {
                         //  Toast.makeText(mContext,"not updated",Toast.LENGTH_SHORT).show();
 
-                        FragmentManager fragmentManager = ((HomeActivity) mContext).getSupportFragmentManager();
-                        MerchantsFragment fragment1 = new MerchantsFragment();
-                        fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment1, "RETRIEVE_MERCHANTS_FRAGMENT").commit();
-
-                        ((HomeActivity) mContext).img_navigation_icon.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_search));
-                        ((HomeActivity) mContext).toolbar.setNavigationIcon(R.drawable.ic_menu);
-
-                        ((HomeActivity) mContext).img_merchant_white.setVisibility(View.VISIBLE);
-                        ((HomeActivity) mContext).img_orders.setVisibility(View.VISIBLE);
-                        ((HomeActivity) mContext).img_orders_white.setVisibility(View.GONE);
-                        ((HomeActivity) mContext).img_merchant.setVisibility(View.GONE);
-
-                        ((HomeActivity) mContext).showAlert("Request sent successfully.");
+                        ((HomeActivity) mContext).showAlert(mContext.getString(R.string.requestSent));
                     }
                 }
             }

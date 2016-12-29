@@ -53,9 +53,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService{
 
         if (!token.equals("")) {
 
-           // SessionData session = new SessionData(getApplicationContext());
-           // session.add("device_token",token);
-
             SharedPreferences.Editor editor  = getApplicationContext().getSharedPreferences("Token", getApplicationContext().MODE_PRIVATE).edit();
 
             editor.putString("token", token);
@@ -64,50 +61,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService{
 
         }
 
-
-        //  if (!token.equals("")) {
-        // Implement code to update registration token to server
-
-       /*     SharedPreferences sharedPreferences1 = getBaseContext().getSharedPreferences("UserProfile",getApplicationContext().MODE_PRIVATE);
-
-            String userName = sharedPreferences1.getString("UserUsername","");
-            String userId = sharedPreferences1.getString("userId","");
-            String url = sharedPreferences1.getString("url","");
-            boolean login = sharedPreferences1.getBoolean("login",false);
-            String mobileNo = sharedPreferences1.getString("mobileno","");
-            String jobTitle = sharedPreferences1.getString("jobTitle","");
-            String password = sharedPreferences1.getString("pass","");
-            String workPhone = sharedPreferences1.getString("workPhone","");
-            String workAddress = sharedPreferences1.getString("workAddress","");
-            String deviceId = sharedPreferences1.getString("deviceId","");
-            String homeAddress = sharedPreferences1.getString("homeAddress","");
-            String fullName = sharedPreferences1.getString("fullName","");
-            String profileImage = sharedPreferences1.getString("profileImage","");
-            String emailId = sharedPreferences1.getString("emailId","");
-
-
-            SharedPreferences.Editor editor = getBaseContext().getSharedPreferences("UserProfile",getApplicationContext().MODE_PRIVATE).edit();
-            editor.putString("UserUsername", userName);
-            editor.putString("userId", userId);
-            editor.putString("url", url);
-            editor.putBoolean("login",login);
-            editor.putString("mobileno",mobileNo);
-            editor.putString("jobTitle",jobTitle);
-            editor.putString("pass",password);
-            editor.putString("workPhone",workPhone);
-            editor.putString("workAddress",workAddress);
-            editor.putString("deviceId",token);
-            editor.putString("homeAddress",homeAddress);
-            editor.putString("fullName",fullName);
-            editor.putString("profileImage",profileImage);
-            editor.putString("emailId",emailId);
-            editor.commit();
-
-            File file = new File(profileImage);
-
-            new UpdateUserAsyncTask(this,getApplicationContext(), userId, fullName, userName, password, mobileNo, emailId, deviceId, file, workAddress, workPhone, homeAddress, jobTitle).execute();
-
-        }*/
     }
 
 }

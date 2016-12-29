@@ -93,7 +93,7 @@ public class OtpConfirmation extends AppCompatActivity {
             SendOtpAsyncTask task = new SendOtpAsyncTask();
             task.execute(phone_no,email_id);
         }else {
-            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Not able to connect. Please check your network connection & try again.", Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(coordinatorLayout,getString(R.string.check_network), Snackbar.LENGTH_LONG);
             snackbar.show();
         }
 
@@ -115,7 +115,7 @@ public class OtpConfirmation extends AppCompatActivity {
                     ActivateUserAsyncTask task = new ActivateUserAsyncTask();
                     task.execute(otp,email_id);
                 }else {
-                    Snackbar snackbar = Snackbar.make(coordinatorLayout, "Please enter the OTP", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(coordinatorLayout,getString(R.string.enterOTP), Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
 
@@ -129,7 +129,7 @@ public class OtpConfirmation extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loadingDialog = ProgressDialog.show(OtpConfirmation.this, null, "please wait...");
+            loadingDialog = ProgressDialog.show(OtpConfirmation.this, null, getString(R.string.wait));
         }
 
         @Override
@@ -189,7 +189,7 @@ public class OtpConfirmation extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loadingDialog = ProgressDialog.show(OtpConfirmation.this, null, "please wait...");
+            loadingDialog = ProgressDialog.show(OtpConfirmation.this, null,getString(R.string.wait));
         }
 
         @Override
@@ -236,7 +236,7 @@ public class OtpConfirmation extends AppCompatActivity {
 
 
                             }else {
-                                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Incorrect OTP !", Snackbar.LENGTH_LONG);
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout,getString(R.string.incorrect), Snackbar.LENGTH_LONG);
                                 snackbar.show();
                             }
                         } else {

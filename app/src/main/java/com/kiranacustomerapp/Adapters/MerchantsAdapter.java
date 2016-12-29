@@ -88,11 +88,16 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         final Merchants data = (Merchants) list.get(position);
         int fav = data.getFav();
+        SessionData sessionData = new SessionData(context);
 
         if(fav == 1)
         {
             holder.imgFavFill.setVisibility(View.VISIBLE);
             holder.imgFavEmpty.setVisibility(View.INVISIBLE);
+
+            sessionData.add("favMerchantId",String.valueOf(data.getMerchant_id()));
+            sessionData.add("favKiranaName",String.valueOf(data.getKirana_name()));
+
         }
         else {
             holder.imgFavFill.setVisibility(View.INVISIBLE);
@@ -116,7 +121,6 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
                     AddFavMerchantAsyncTask task = new AddFavMerchantAsyncTask(context);
                     task.execute(sessionUserId,access_token,sessionUserId,String.valueOf(data.getMerchant_id()));
-
 
                   // ((HomeActivity)context).showAlert("This merchant is now set as your favorite merchant.");
 

@@ -49,7 +49,7 @@ public class GetSearchedMerchantsAsyncTask extends AsyncTask<String, Void, JSONO
     protected void onPreExecute() {
         super.onPreExecute();
         progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait..");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.show();
     }
 

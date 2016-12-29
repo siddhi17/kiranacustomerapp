@@ -2,25 +2,18 @@ package com.kiranacustomerapp.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
+import android.widget.Filterable;
 
-import com.kiranacustomerapp.Activities.HomeActivity;
 import com.kiranacustomerapp.Activities.MerchantProfileActivity;
-import com.kiranacustomerapp.AsyncTasks.AddFavMerchantAsyncTask;
 import com.kiranacustomerapp.AsyncTasks.SendRequestAsyncTask;
-import com.kiranacustomerapp.Fragments.AddOrderFragment;
-import com.kiranacustomerapp.Fragments.MerchantsFragment;
 import com.kiranacustomerapp.Models.Merchants;
 import com.kiranacustomerapp.R;
-import com.kiranacustomerapp.helper.CommonUtils;
 import com.kiranacustomerapp.helper.SessionData;
-import com.kiranacustomerapp.viewHolders.LoadMerchantsHolder;
 import com.kiranacustomerapp.viewHolders.LoadSearchedMerchants;
 
 import java.util.ArrayList;
@@ -29,19 +22,17 @@ import java.util.List;
 /**
  * Created by Siddhi on 12/26/2016.
  */
-public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable{
     static final int LOAD_MERCHANTS = 0;
     private Context context;
     public ArrayList<Merchants> list;
     public ArrayList<Merchants> baselist = new ArrayList<>();
-
 
     public SearchedMerchantsAdapter(Context context, ArrayList<Merchants> list) {
         this.context = context;
         this.list = list;
         this.baselist = list;
     }
-
     @Override
     public int getItemViewType(int position) {
 
@@ -93,7 +84,6 @@ public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.
         holder.tv_address.setText(data.getMerchant_address());
 
 
-
         holder.lay_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,13 +113,6 @@ public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.
 
                 new SendRequestAsyncTask(context).execute(sessionUserId,access_token,data.getMerchant_id().toString());
 
-                FragmentManager fragmentManager = ((HomeActivity)context).getSupportFragmentManager();
-                MerchantsFragment fragment1 = new MerchantsFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("kiranaName",data.getKirana_name());
-                bundle.putString("merchant_id",String.valueOf(data.getMerchant_id()));
-                fragment1.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment1,"RETRIEVE_MERCHANTS_FRAGMENT").commit();
             }
         });
 
@@ -145,9 +128,10 @@ public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.
 
                 if (constraint != null) {
                     if (baselist != null && baselist.size() > 0) {
-                        for (final Merchants g : baselist) {
+                        for (final Merchants g : baselist ) {
                             if (g.getKirana_name()
-                                    .contains(constraint.toString()) || g.getMerchant_address().contains(constraint.toString()))
+                                    .contains(constraint.toString())||g.getMerchant_address()
+                                    .contains(constraint.toString()))
                                 results.add(g);
                         }
                     }

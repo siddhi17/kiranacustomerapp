@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 
 import com.kiranacustomerapp.Database.ItemsTableHelper;
 import com.kiranacustomerapp.Models.QueryOrderItem;
+import com.kiranacustomerapp.R;
 
 /**
  * Created by Siddhi on 12/23/2016.
@@ -27,7 +28,7 @@ public class AddQueryItemAsyncTask extends AsyncTask<String,String,QueryOrderIte
         super.onPreExecute();
 
         progressDialog=new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
         //   progressDialog.show();

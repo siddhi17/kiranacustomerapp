@@ -8,8 +8,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.EditText;
+
+import com.kiranacustomerapp.Database.DatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.regex.Pattern;
 
 /**
@@ -100,11 +105,11 @@ public class CommonUtils {
     public static  String checkDate(String enddate){
         String output="";
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
             Calendar c = Calendar.getInstance();
             c.setTime(sdf.parse(enddate));
             c.add(Calendar.DATE, 90);  // number of days to add, can also use Calendar.DAY_OF_MONTH in place of Calendar.DATE
-            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
             output = sdf1.format(c.getTime());
         }catch (Exception e){
             Log.e("endDate",e.toString());
@@ -117,11 +122,7 @@ public class CommonUtils {
 
     public static boolean checkAndRequestPermissions(final Activity activity) {
 
-      //  int cameraPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
-     //   int calendarRdPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_CALENDAR);
-     //   int calendarWrPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_CALENDAR);
-        int storagePermissionWrtExt = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-    //    int storagePermissionReadExt = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
+
         int internetPermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.INTERNET);
         int networkStatePermission = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_NETWORK_STATE);
         int locationPermission = ContextCompat.checkSelfPermission(activity,Manifest.permission.ACCESS_FINE_LOCATION);
@@ -129,15 +130,6 @@ public class CommonUtils {
 
         List<String> listPermissionsNeeded = new ArrayList<>();
 
-    //    if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-      //      listPermissionsNeeded.add(Manifest.permission.CAMERA);
-    //    }
-      //  if (storagePermissionWrtExt != PackageManager.PERMISSION_GRANTED) {
-       //     listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-       // }
-     //   if (storagePermissionReadExt != PackageManager.PERMISSION_GRANTED) {
-    //        listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-    //    }
         if (internetPermission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.INTERNET);
         }
@@ -150,12 +142,6 @@ public class CommonUtils {
         if (coarseLocation != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
-     //   if (calendarRdPermission != PackageManager.PERMISSION_GRANTED) {
-      //      listPermissionsNeeded.add(Manifest.permission.READ_CALENDAR);
-      //  }
-     //   if (calendarWrPermission != PackageManager.PERMISSION_GRANTED) {
-       //     listPermissionsNeeded.add(Manifest.permission.WRITE_CALENDAR);
-     //   }
 
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(activity, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
@@ -167,5 +153,14 @@ public class CommonUtils {
     public static boolean checkEmail(String email) {
         return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
+
+    public static CharSequence getCurrentDateTime(){
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        String date_time = sdf.format(cal.getTime());
+        return date_time;
+    }
+
+
 
 }

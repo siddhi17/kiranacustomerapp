@@ -31,16 +31,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:text="Please enter OTP sent on your mobile number below."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal_vertical_margin"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:text="@string/otp" />
         <EditText
             android:id="@+id/edt_otp"
             android:layout_marginTop="@dimen/medium_vertical_margin"
             android:gravity="center"
-            android:hint="Enter OTP"
+            android:hint="@string/enterOtp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:editable="true"
@@ -55,7 +55,7 @@
             <Button
                 android:id="@+id/btn_resend_otp"
                 android:textAllCaps="false"
-                android:text="Resend OTP"
+                android:text="@string/resendOTP"
                 android:background="@drawable/btn_hlf_blue"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/exlarge_vertical_margin"
@@ -66,7 +66,7 @@
             <Button
                 android:id="@+id/btn_submit_otp"
                 android:textAllCaps="false"
-                android:text="Submit OTP"
+                android:text="@string/submitOTP"
                 style="?android:attr/borderlessButtonStyle"
                 android:background="@drawable/btn_hlf_purple"
                 android:layout_width="match_parent"

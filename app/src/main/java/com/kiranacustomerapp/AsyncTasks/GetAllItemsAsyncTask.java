@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import com.kiranacustomerapp.Database.ItemsTableHelper;
 import com.kiranacustomerapp.Models.OrderItem;
 import com.kiranacustomerapp.Models.QueryOrderItem;
+import com.kiranacustomerapp.R;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ public class GetAllItemsAsyncTask  extends AsyncTask<Void,Void,ArrayList<String>
         super.onPreExecute();
 
         progressDialog=new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
     //    progressDialog.show();

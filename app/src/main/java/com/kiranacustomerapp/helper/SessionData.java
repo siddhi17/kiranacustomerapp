@@ -38,15 +38,15 @@ public class SessionData {
         return pref.getString(name, defaultValue);
     }
 
-    public int getInt(String name, int defultValue) {
-        return pref.getInt(name,defultValue);
+    public int getInt(String name, int defaultValue) {
+        return pref.getInt(name,defaultValue);
     }
 
-    public long getLong(String name, long defultValue) {
-        return Long.parseLong(getString(name,""+defultValue));
+    public long getLong(String name, long defaultValue) {
+        return Long.parseLong(getString(name,""+defaultValue));
     }
-    public long getLongEx(String name, long defultValue) {
-        return pref.getLong(name,defultValue);
+    public long getLongEx(String name, long defaultValue) {
+        return pref.getLong(name,defaultValue);
     }
     public boolean delete(String name) {
         SharedPreferences.Editor editor = pref.edit();

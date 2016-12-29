@@ -1,21 +1,27 @@
 package com.kiranacustomerapp.Activities;
 
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.kiranacustomerapp.AsyncTasks.AddItemAsyncTask;
 import com.kiranacustomerapp.AsyncTasks.AddUnitAsyncTask;
 import com.kiranacustomerapp.Database.DatabaseHelper;
 import com.kiranacustomerapp.Models.Item;
 import com.kiranacustomerapp.Models.Unit;
+import com.kiranacustomerapp.helper.CommonUtils;
 import com.kiranacustomerapp.helper.SessionData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class StartupActivity extends AppCompatActivity {
@@ -25,12 +31,15 @@ public class StartupActivity extends AppCompatActivity {
     private SessionData sessionData;
     private Boolean addItem = false,addUnit=false;
     SharedPreferences.Editor editor;
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 111;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         sessionData = new SessionData(StartupActivity.this);
         sessionUserId = sessionData.getString("user_id","-1");
+
 
         DatabaseHelper db = new DatabaseHelper(StartupActivity.this);
         db.createDatabase();

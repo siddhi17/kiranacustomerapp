@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 
 import com.kiranacustomerapp.Database.ItemNamesTableHelper;
 import com.kiranacustomerapp.Database.ItemsTableHelper;
+import com.kiranacustomerapp.R;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class GetAllItemNamesAsyncTask extends AsyncTask<Void,Void,ArrayList<Stri
         super.onPreExecute();
 
         progressDialog=new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
         //    progressDialog.show();

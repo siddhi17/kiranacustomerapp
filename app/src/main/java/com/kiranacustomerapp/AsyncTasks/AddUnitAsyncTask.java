@@ -8,6 +8,7 @@ import com.kiranacustomerapp.Database.ItemNamesTableHelper;
 import com.kiranacustomerapp.Database.UnitsTableHelper;
 import com.kiranacustomerapp.Models.Item;
 import com.kiranacustomerapp.Models.Unit;
+import com.kiranacustomerapp.R;
 
 /**
  * Created by Siddhi on 12/23/2016.
@@ -30,7 +31,7 @@ public class AddUnitAsyncTask extends AsyncTask<String,String,Unit> {
         super.onPreExecute();
 
         progressDialog=new ProgressDialog(mContext);
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setMessage(mContext.getString(R.string.wait));
         progressDialog.setIndeterminate(false);
         progressDialog.setCancelable(false);
         //   progressDialog.show();
