@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/normal_vertical_margin"
-            android:textSize="15dp"
+            android:textSize="16sp"
             android:text="@string/otp" />
         <EditText
             android:id="@+id/edt_otp"
@@ -46,7 +46,8 @@
             android:editable="true"
             android:enabled="true"
             android:inputType="number"
-            android:maxLength="6" />
+            android:maxLength="6"
+            android:textSize="14sp" />
         <LinearLayout
             android:layout_marginTop="@dimen/medium_vertical_margin"
             android:orientation="horizontal"
@@ -62,7 +63,8 @@
                 android:textColor="@color/btn_text"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_weight="1"
-                android:layout_marginRight="3dp" />
+                android:layout_marginRight="3dp"
+                android:textSize="16sp" />
             <Button
                 android:id="@+id/btn_submit_otp"
                 android:textAllCaps="false"
@@ -73,7 +75,8 @@
                 android:layout_height="@dimen/exlarge_vertical_margin"
                 android:textColor="@color/btn_text"
                 android:layout_weight="1"
-                android:layout_marginLeft="3dp" />
+                android:layout_marginLeft="3dp"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

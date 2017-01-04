@@ -33,7 +33,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService{
      * is initially generated so this is where you would retrieve the token.
      */
     // [START refresh_token]
-    @Override
+   @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
@@ -64,3 +64,4 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService{
     }
 
 }
+

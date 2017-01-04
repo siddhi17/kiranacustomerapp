@@ -22,7 +22,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:textColor="@color/lighttextcolor"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp" />
         </LinearLayout>

@@ -12,6 +12,7 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.kiranacustomerapp.Activities.HomeActivity;
 import com.kiranacustomerapp.R;
 
 
@@ -26,53 +27,51 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        //Displaying data in log
-        //It is optional
+        super.onMessageReceived(remoteMessage);
+
+        // TODO(developer): Handle FCM messages here.
+        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
 
-        String clickAction = remoteMessage.getNotification().getClickAction();
+        // Check if message contains a data payload.
+        if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "Message data payload: " + remoteMessage.describeContents());
+        }
 
-        mUserId = remoteMessage.getData().get("user_id");
-
-        String title = remoteMessage.getNotification().getTitle();
-
-        //Calling method to generate notification
-      //  sendNotification(remoteMessage.getNotification().getBody(),clickAction,title);
+        // Check if message contains a notification payload.
+        if (remoteMessage.getNotification() != null) {
+            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        }
+        sendNotification(remoteMessage.getNotification().getBody());
     }
 
-    //This method is only generating push notification
-    //It is same as we did in earlier posts
-   /* private void sendNotification(String messageBody,String clickAction,String title) {
+    private void sendNotification(String messageBody) {
 
-        mUpdateNotification = true;
+        Intent intent = new Intent();
+        if (messageBody.contains("Your order status")){
+            intent = new Intent(this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
 
-        Intent intent = new Intent(clickAction);
-
-        intent.putExtra("userId",mUserId);
-        intent.putExtra("updateNotification",mUpdateNotification);
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setContentTitle(title)
+                .setSmallIcon(R.drawable.kirana)
+                .setContentTitle("KIRANA")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.kirana);
                 .setSound(defaultSoundUri)
-                .setColor(ContextCompat.getColor(this,R.color.black))
                 .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0, notificationBuilder.build());
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
-  /*  private int getNotificationIcon() {
+  private int getNotificationIcon() {
         boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP);
-       // return useWhiteIcon ? R.drawable.notification_icon : R.drawable.notification_icon;
-    }*/
+        return useWhiteIcon ? R.drawable.kirana : R.drawable.kirana;
+    }
 }

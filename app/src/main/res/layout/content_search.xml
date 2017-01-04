@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
+                android:textColorHint="@color/lighttextcolor"
                 android:layout_marginRight="20dp">
 
                 <LinearLayout
@@ -73,15 +74,15 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:hint="@string/item_name"
                 android:focusable="false"
+                android:textColorHint="@color/lighttextcolor"
+                android:textColor="@color/lighttextcolor"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="07dp"
-                android:textSize="14sp"
                 android:imeOptions="actionDone"
-                android:background="@drawable/edit_text_bottom_line"
-                android:textStyle="bold"
                 android:inputType="text"
-                android:textColor="@color/lighttextcolor">
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:theme="@style/style_edittext_color_control">
 
 </android.support.design.widget.TextInputEditText>
             </android.support.design.widget.TextInputLayout>
@@ -102,6 +103,7 @@
                 android:id="@+id/input_layout_item_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/lighttextcolor"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="05dp">
@@ -125,18 +127,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:focusable="false"
+                    android:textColorHint="@color/lighttextcolor"
+                    android:textColor="@color/lighttextcolor"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="07dp"
                     android:id="@+id/editTextItemUnit"
                     android:layout_gravity="center_horizontal"
                     android:hint="@string/unit"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
                     android:imeOptions="actionDone"
-                    android:background="@drawable/edit_text_bottom_line"
                     android:inputType="text"
-                    android:textColor="@color/lighttextcolor" />
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:theme="@style/style_edittext_color_control" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -153,6 +155,7 @@
                 android:id="@+id/input_layout_item_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="@color/lighttextcolor"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="05dp">
@@ -160,19 +163,18 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:textColorHint="@color/lighttextcolor"
+                    android:textColor="@color/lighttextcolor"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="05dp"
                     android:id="@+id/editTextItemQuantity"
                     android:layout_gravity="center_horizontal"
                     android:hint="@string/quantity"
                     android:textSize="14sp"
                     android:imeOptions="actionDone"
-                    android:textColorHint="@color/grey"
-                    android:textStyle="bold"
-                    android:background="@drawable/edit_text_bottom_line"
                     android:inputType="number"
-                    android:textColor="@color/lighttextcolor" />
+                    android:textStyle="bold"
+                    android:theme="@style/style_edittext_color_control" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
         </LinearLayout>
@@ -192,7 +194,7 @@
             android:id="@+id/buttonSelect"
             android:background="@drawable/btn_hlf_blue"
             android:textColor="@android:color/white"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:layout_alignParentBottom="false"
             android:layout_centerHorizontal="true" />
         </RelativeLayout>

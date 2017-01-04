@@ -1,6 +1,7 @@
 package com.kiranacustomerapp.Adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,6 +96,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 ((SearchActivity)context).linearLayoutUnits.setVisibility(View.GONE);
                 ((SearchActivity)context).textInput_Item_Unit.setVisibility(View.VISIBLE);
                 ((SearchActivity)context).textInput_Item_quantity.setVisibility(View.VISIBLE);
+             //   ((SearchActivity)context).edt_Item_Name.setHintTextColor(ContextCompat.getColor(context,R.color.accent));
+                ((SearchActivity)context).focus2 = false;
+                ((SearchActivity)context).focus1 = false;
 
                 ((SearchActivity)context).textInput_Item_name.setBackgroundResource(0);
                 ((SearchActivity)context).textInput_Item_Unit.setBackgroundResource(0);

@@ -31,11 +31,11 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     static final int LOAD_MERCHANTS = 0;
     private Context context;
-    private List<Object> list;
+    private List<Merchants> list;
 
     private MerchantsFragment merchantsFragment;
 
-    public MerchantsAdapter(Context context, List<Object> list) {
+    public MerchantsAdapter(Context context, List<Merchants> list) {
         this.context = context;
         this.list = list;
         this.merchantsFragment = merchantsFragment;
@@ -93,14 +93,14 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if(fav == 1)
         {
             holder.imgFavFill.setVisibility(View.VISIBLE);
-            holder.imgFavEmpty.setVisibility(View.INVISIBLE);
+            holder.imgFavEmpty.setVisibility(View.GONE);
 
-            sessionData.add("favMerchantId",String.valueOf(data.getMerchant_id()));
-            sessionData.add("favKiranaName",String.valueOf(data.getKirana_name()));
+
 
         }
         else {
-            holder.imgFavFill.setVisibility(View.INVISIBLE);
+
+            holder.imgFavFill.setVisibility(View.GONE);
             holder.imgFavEmpty.setVisibility(View.VISIBLE);
         }
 
@@ -120,7 +120,7 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 if (CommonUtils.isConnectedToInternet(context)){
 
                     AddFavMerchantAsyncTask task = new AddFavMerchantAsyncTask(context);
-                    task.execute(sessionUserId,access_token,sessionUserId,String.valueOf(data.getMerchant_id()));
+                    task.execute(sessionUserId,access_token,sessionUserId,String.valueOf(data.getMerchant_id()),data.getKirana_name());
 
                   // ((HomeActivity)context).showAlert("This merchant is now set as your favorite merchant.");
 

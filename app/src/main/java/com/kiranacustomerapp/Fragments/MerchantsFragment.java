@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import com.kiranacustomerapp.Activities.HomeActivity;
 import com.kiranacustomerapp.Adapters.MerchantsAdapter;
 import com.kiranacustomerapp.Adapters.OrdersAdapter;
+import com.kiranacustomerapp.AsyncTasks.AddFavMerchantAsyncTask;
 import com.kiranacustomerapp.Models.Merchants;
 import com.kiranacustomerapp.Models.Orders;
 import com.kiranacustomerapp.R;
@@ -43,7 +44,7 @@ public class MerchantsFragment extends Fragment {
 
     private Context context;
     private RecyclerView rv_fetch_merchants;
-    private ArrayList<Object> merchantsList;
+    private ArrayList<Merchants> merchantsList;
     private MerchantsAdapter merchantsAdapter;
 
     private SessionData sessionData;
@@ -73,7 +74,7 @@ public class MerchantsFragment extends Fragment {
 
         coordinatorLayout=(CoordinatorLayout)view.findViewById(R.id.coordinatorLayout);
         rv_fetch_merchants=(RecyclerView)view.findViewById(R.id.rv_fetch_merchants);
-        merchantsList = new ArrayList<Object>();
+        merchantsList = new ArrayList<Merchants>();
         merchantsAdapter = new MerchantsAdapter(this.getContext(),merchantsList);
         rv_fetch_merchants.setLayoutManager(new LinearLayoutManager(context));
         rv_fetch_merchants.setAdapter(merchantsAdapter);
@@ -174,6 +175,13 @@ public class MerchantsFragment extends Fragment {
                             emailId = jsonObject.getString("email_id");
                             fav=jsonObject.getInt("fav");
                             address=jsonObject.getString("address");
+
+
+                            if(fav == 1)
+                            {
+                                sessionData.add("favMerchantId",String.valueOf(merchantId));
+                                sessionData.add("favKiranaName",String.valueOf(kiranaName));
+                            }
 
                             Merchants merchants = new Merchants(merchantId,kiranaName,merchantName,phoneNo,emailId,address,fav);
                             merchantsList.add(merchants);

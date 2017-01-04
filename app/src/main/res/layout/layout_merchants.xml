@@ -9,7 +9,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="130dp"
         android:id="@+id/lay_row"
         android:background="#ffffff">
 
@@ -17,14 +17,14 @@
             android:layout_width="100dp"
             android:layout_height="match_parent">
         <RelativeLayout
-            android:layout_width="30dp"
-            android:layout_height="24dp"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
             android:background="@drawable/fav_bg"
             android:layout_marginTop="05dp"
             android:id="@+id/layoutFav">
         <ImageView
-            android:layout_width="14dp"
-            android:layout_height="14dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:id="@+id/imageViewFill"
             android:src="@drawable/ic_favt_fill"
             android:layout_centerVertical="true"
@@ -32,8 +32,8 @@
             android:visibility="gone" />
 
             <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:id="@+id/imageViewEmpty"
                 android:src="@drawable/ic_favt"
                 android:layout_centerVertical="true"
@@ -66,37 +66,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginRight="12dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="05dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Matt lanter"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textColor="@color/accent_material_light"
                 android:id="@+id/tv_kirana_name"
                 android:typeface="monospace"
                 android:theme="@style/AppTheme"
                 android:textStyle="bold"
                 android:gravity="top"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="12dp" />
+                android:layout_toLeftOf="@+id/linearLayout3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="false"
+                android:layout_centerVertical="true" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginTop="7dp"
                     android:layout_marginRight="4dp"
                     android:gravity="right"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/linearLayout3">
                     <ImageView
                         android:src="@drawable/ic_ctx_menu"
                         android:layout_width="20dp"
-                        android:layout_height="20dp" />
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -105,7 +110,6 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:layout_marginRight="12dp">
 
@@ -121,7 +125,7 @@
                     android:text="Small Text"
                     android:id="@+id/textViewAddress"
                     android:layout_marginLeft="10dp"
-                    android:textSize="10sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -135,7 +139,7 @@
                 android:layout_width="100dp"
                 android:layout_height="25dp"
                 android:textColor="@android:color/white"
-                android:textSize="09sp"
+                android:textSize="11sp"
                 android:layout_gravity="right"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="10dp" />
