@@ -48,6 +48,7 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
         progressDialog = new ProgressDialog(mContext);
         progressDialog.setMessage(mContext.getString(R.string.wait));
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
     }
@@ -95,6 +96,10 @@ public class AddOrderAsyncTask extends AsyncTask<String, Void, JSONObject> {
                         ((HomeActivity) mContext).showAlert(message);
                     } else {
                         //  Toast.makeText(mContext,"not updated",Toast.LENGTH_SHORT).show();
+
+                        FragmentManager fragmentManager = ((HomeActivity) mContext).getSupportFragmentManager();
+                        OrdersFragment fragment1 = new OrdersFragment();
+                        fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment1, "RETRIEVE_ORDERS_FRAGMENT").commit();
 
                         ((HomeActivity) mContext).showAlert(mContext.getString(R.string.orderSent));
                     }

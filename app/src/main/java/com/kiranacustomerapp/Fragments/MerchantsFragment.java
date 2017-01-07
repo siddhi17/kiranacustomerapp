@@ -133,6 +133,7 @@ public class MerchantsFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog.setMessage(getString(R.string.wait));
+            progressDialog.setCancelable(false);
             progressDialog.show();
         }
 

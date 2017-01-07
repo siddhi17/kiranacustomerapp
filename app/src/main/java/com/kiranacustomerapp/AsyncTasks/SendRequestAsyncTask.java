@@ -40,6 +40,7 @@ public class SendRequestAsyncTask extends AsyncTask<String, Void, JSONObject> {
 
         progressDialog = new ProgressDialog(mContext);
         progressDialog.setMessage(mContext.getString(R.string.wait));
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
     }
