@@ -18,18 +18,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:src="@drawable/avatar1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:scaleType="fitCenter"
                 android:layout_alignParentTop="false"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentStart="false"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
+                android:paddingRight="10dp"
+                android:id="@+id/imageViewAvatar" />
         </RelativeLayout>
 
         <LinearLayout

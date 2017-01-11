@@ -23,6 +23,7 @@ public class LoadBillsHolder extends RecyclerView.ViewHolder {
         tv_Start_date = (TextView) itemView.findViewById(R.id.tv_start_date);
         tv_end_date = (TextView) itemView.findViewById(R.id.tv_end_date);
         tv_amount = (TextView) itemView.findViewById(R.id.tv_amount);
+        lay_row = (LinearLayout) itemView.findViewById(R.id.lay_row);
 
     }
 

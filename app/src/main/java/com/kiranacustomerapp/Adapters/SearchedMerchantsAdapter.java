@@ -15,6 +15,7 @@ import com.kiranacustomerapp.Models.Merchants;
 import com.kiranacustomerapp.R;
 import com.kiranacustomerapp.helper.SessionData;
 import com.kiranacustomerapp.viewHolders.LoadSearchedMerchants;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +85,15 @@ public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.
         holder.tv_address.setText(data.getMerchant_address());
 
 
+        String url = "http://104.131.162.126/testslim/v1/src/images/" + data.getAvatar();
+
+        Picasso.with(context)
+                .load(url)
+                .resize(400,400)
+                .placeholder(R.drawable.avatar1)
+                .error(R.drawable.avatar1)
+                .into(holder.img_mer_avatar);
+
         holder.lay_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +105,7 @@ public class SearchedMerchantsAdapter extends RecyclerView.Adapter<RecyclerView.
                 i.putExtra("email_id",data.getEmail_id());
                 i.putExtra("phone_no",data.getPhone());
                 i.putExtra("address",data.getMerchant_address());
+                i.putExtra("avatar",data.getAvatar());
 
                 context.startActivity(i);
 

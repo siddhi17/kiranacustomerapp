@@ -19,6 +19,7 @@ import com.kiranacustomerapp.R;
 import com.kiranacustomerapp.helper.CommonUtils;
 import com.kiranacustomerapp.helper.SessionData;
 import com.kiranacustomerapp.viewHolders.LoadMerchantsHolder;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -104,6 +105,14 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             holder.imgFavEmpty.setVisibility(View.VISIBLE);
         }
 
+        String url = "http://104.131.162.126/testslim/v1/src/images/" + data.getAvatar();
+
+        Picasso.with(context)
+                .load(url)
+                .resize(400,400)
+                .placeholder(R.drawable.avatar1)
+                .error(R.drawable.avatar1)
+                .into(holder.img_mer_avatar);
 
         holder.tv_kiarana_name.setText(data.getKirana_name());
         holder.tv_address.setText(data.getMerchant_address());
@@ -144,6 +153,7 @@ public class MerchantsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 i.putExtra("email_id",data.getEmail_id());
                 i.putExtra("phone_no",data.getPhone());
                 i.putExtra("address",data.getMerchant_address());
+                i.putExtra("avatar",data.getAvatar());
 
                 context.startActivity(i);
 

@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Merchants implements Serializable{
 
-    private String merchant_name,kirana_name,merchant_address,mobile_no,phone,email_id;
+    private String merchant_name,kirana_name,merchant_address,mobile_no,phone,email_id,avatar;
     int fav;
     private Long merchant_id;
     private double longitude,latitude;
@@ -23,7 +23,7 @@ public class Merchants implements Serializable{
 
     }
 
-    public Merchants(Long merchant_id,String kirana_name,String merchant_name,String phone,String email_id,String merchant_address,int fav)
+    public Merchants(Long merchant_id,String kirana_name,String merchant_name,String phone,String email_id,String merchant_address,int fav,String avatar)
     {
         this.merchant_id = merchant_id;
         this.kirana_name = kirana_name;
@@ -32,9 +32,10 @@ public class Merchants implements Serializable{
         this.merchant_name = merchant_name;
         this.email_id = email_id;
         this.phone = phone;
+        this.avatar = avatar;
 
     }
-    public Merchants(Long merchant_id,String kirana_name,String merchant_name,String phone,String email_id,String merchant_address,double latitude,double longitude)
+    public Merchants(Long merchant_id,String kirana_name,String merchant_name,String phone,String email_id,String merchant_address,double latitude,double longitude,String avatar)
     {
         this.merchant_id = merchant_id;
         this.kirana_name = kirana_name;
@@ -45,7 +46,16 @@ public class Merchants implements Serializable{
         this.phone = phone;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.avatar = avatar;
 
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public void setLatitude(double latitude) {

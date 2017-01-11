@@ -78,6 +78,10 @@ public class MerchantsFragment extends Fragment {
         merchantsAdapter = new MerchantsAdapter(this.getContext(),merchantsList);
         rv_fetch_merchants.setLayoutManager(new LinearLayoutManager(context));
         rv_fetch_merchants.setAdapter(merchantsAdapter);
+        rv_fetch_merchants.setHasFixedSize(true);
+        rv_fetch_merchants.setItemViewCacheSize(30);
+        rv_fetch_merchants.setDrawingCacheEnabled(true);
+        rv_fetch_merchants.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
      //   loadData();
 
@@ -166,7 +170,7 @@ public class MerchantsFragment extends Fragment {
                             snackbar.show();
                         } else {
                             long id,merchantId;
-                            String kiranaName,emailId,address,merchantName,phoneNo;
+                            String kiranaName,emailId,address,merchantName,phoneNo,avatar;
                             int fav;
 
                             merchantId = jsonObject.getLong("merchant_id");
@@ -176,6 +180,8 @@ public class MerchantsFragment extends Fragment {
                             emailId = jsonObject.getString("email_id");
                             fav=jsonObject.getInt("fav");
                             address=jsonObject.getString("address");
+                            avatar = jsonObject.getString("avatar");
+
 
 
                             if(fav == 1)
@@ -184,7 +190,7 @@ public class MerchantsFragment extends Fragment {
                                 sessionData.add("favKiranaName",String.valueOf(kiranaName));
                             }
 
-                            Merchants merchants = new Merchants(merchantId,kiranaName,merchantName,phoneNo,emailId,address,fav);
+                            Merchants merchants = new Merchants(merchantId,kiranaName,merchantName,phoneNo,emailId,address,fav,avatar);
                             merchantsList.add(merchants);
                             merchantsAdapter.notifyDataSetChanged();
 

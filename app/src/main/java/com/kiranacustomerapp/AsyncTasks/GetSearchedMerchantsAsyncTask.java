@@ -90,7 +90,7 @@ public class GetSearchedMerchantsAsyncTask extends AsyncTask<String, Void, JSONO
                         ((HomeActivity)mContext).showAlert(message);
                     } else {
                         long id,merchantId;
-                        String kiranaName,emailId,address,merchantName,phoneNo;
+                        String kiranaName,emailId,address,merchantName,phoneNo,avatar;
                         int fav;
                         double latitude,longitude;
 
@@ -103,8 +103,9 @@ public class GetSearchedMerchantsAsyncTask extends AsyncTask<String, Void, JSONO
                         address=jsonObject.getString("address");
                         latitude = Double.parseDouble(jsonObject.getString("Latitude"));
                         longitude = Double.parseDouble(jsonObject.getString("Longitude"));
+                        avatar = jsonObject.getString("avatar");
 
-                        Merchants merchants = new Merchants(merchantId,kiranaName,merchantName,phoneNo,emailId,address,latitude,longitude);
+                        Merchants merchants = new Merchants(merchantId,kiranaName,merchantName,phoneNo,emailId,address,latitude,longitude,avatar);
                         merchantsList.add(merchants);
                         getSearchedMerchantsCallBack.doPostExecute(merchantsList);
 

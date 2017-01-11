@@ -22,7 +22,7 @@ import com.kiranacustomerapp.R;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
-    private String mUserId;
+    private String mOrderId;
     private Boolean mUpdateNotification;
 
     @Override
@@ -42,14 +42,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
+
+        mOrderId = remoteMessage.getData().get("order_id");
+
         sendNotification(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
     }
 
     private void sendNotification(String messageBody,String title) {
 
         Intent intent = new Intent();
-        if (messageBody.contains("Order status")){
+        if (title.contains("Order status")){
             intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("order_id",mOrderId);
+            intent.putExtra("title",title);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 

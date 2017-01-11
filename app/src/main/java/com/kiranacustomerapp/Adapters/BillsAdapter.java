@@ -1,6 +1,7 @@
 package com.kiranacustomerapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kiranacustomerapp.Activities.BillDetails;
 import com.kiranacustomerapp.Fragments.OrderDetailFragment;
 import com.kiranacustomerapp.Fragments.OrdersFragment;
 import com.kiranacustomerapp.Models.Bills;
@@ -92,28 +94,16 @@ public class BillsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         holder.tv_end_date.setText(endDate);
         holder.tv_amount.setText(String.valueOf(data.getAmount()));
 
-     /*  holder.lay_row.setOnClickListener(new View.OnClickListener() {
+       holder.lay_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Bundle bundle = new Bundle();
-                bundle.putString("name", data.getMerchant_name());
-                bundle.putString("date", newDate);
-                bundle.putString("time", time);
-                bundle.putLong("quantity", data.getItem_quantity());
-                bundle.putInt("status", data.getStatus());
-                bundle.putLong("orderID", data.getId());
-                bundle.putLong("amount", data.getTotalAmount());
-                bundle.putString("avatar", data.getAvatar());
-                bundle.putString("receipt", data.getReceipt());
-                //go to home screen
-                FragmentManager fragmentManager = ordersFragment.getFragmentManager();
-                OrderDetailFragment fragment = new OrderDetailFragment();
-                fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.mycontainer, fragment, "RETRIEVE_ORDERS_ITEMS_FRAGMENT").commit();
+                Intent i = new Intent(context,BillDetails.class);
+                i.putExtra("bill_id",data.getBill_id());
+                context.startActivity(i);
 
             }
-        });*/
+        });
 
     }
 

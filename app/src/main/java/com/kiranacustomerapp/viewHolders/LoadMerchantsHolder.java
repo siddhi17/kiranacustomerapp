@@ -10,16 +10,19 @@ import android.widget.TextView;
 
 import com.kiranacustomerapp.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Siddhi on 11/26/2016.
  */
 public class LoadMerchantsHolder  extends RecyclerView.ViewHolder{
 
-    public ImageView img_mer_avatar,imgFavEmpty,imgFavFill;
+    public ImageView imgFavEmpty,imgFavFill;
     public TextView tv_kiarana_name,tv_address;
     public LinearLayout lay_row;
     public RelativeLayout layoutFav;
     public Button btnPlaceOrder;
+    public CircleImageView img_mer_avatar;
 
 
     public LoadMerchantsHolder(View v) {
@@ -31,7 +34,7 @@ public class LoadMerchantsHolder  extends RecyclerView.ViewHolder{
         imgFavEmpty = (ImageView) v.findViewById(R.id.imageViewEmpty);
         imgFavFill = (ImageView) v.findViewById(R.id.imageViewFill);
         btnPlaceOrder = (Button) v.findViewById(R.id.btnPlacePrder);
-        //img_cust_avatar = (ImageView) v.findViewById(R.id.img_cust_avatar);
+        img_mer_avatar = (CircleImageView) v.findViewById(R.id.imageViewAvatar);
 
 
     }
